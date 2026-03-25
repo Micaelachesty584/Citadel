@@ -200,7 +200,7 @@ Where `{citadel-root}` is the absolute path to the Citadel plugin directory. To 
 2. Or ask the user where they cloned Citadel
 
 The installer:
-- Reads `hooks/hooks.json` from Citadel
+- Reads `hooks/hooks-template.json` from Citadel
 - Replaces `${CLAUDE_PLUGIN_ROOT}` with the resolved absolute path
 - Writes working hooks into this project's `.claude/settings.json`
 - Preserves any existing non-Citadel settings (permissions, env, mcpServers)

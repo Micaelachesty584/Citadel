@@ -22,7 +22,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PLUGIN_ROOT = path.resolve(__dirname, '..');
-const SETTINGS_PATH = path.join(PLUGIN_ROOT, 'hooks', 'hooks.json');
+const SETTINGS_PATH = path.join(PLUGIN_ROOT, 'hooks', 'hooks-template.json');
 const HOOKS_DIR = path.join(PLUGIN_ROOT, 'hooks_src');
 
 let passed = 0;

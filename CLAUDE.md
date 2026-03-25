@@ -15,7 +15,7 @@ Claude Code to operate autonomously on any codebase. It provides:
 
 - Skills live in `skills/`. Each has a SKILL.md with the full protocol.
 - Agents live in `agents/`. They spawn as sub-processes with their own context.
-- Hooks live in `hooks_src/`. They fire automatically via `hooks/hooks.json`.
+- Hooks live in `hooks_src/`. Installed per-project via `scripts/install-hooks.js`.
 - The `init-project` hook auto-scaffolds per-project state on session start:
   - `.planning/` — campaign state, fleet sessions, intake, telemetry
   - `.citadel/scripts/` — utility scripts (telemetry, coordination, compression)

@@ -57,7 +57,8 @@ Automatic shell scripts that fire on lifecycle events:
 | `restore-compact.js` | SessionStart (compact) | Restore context after compression |
 | `worktree-setup.js` | WorktreeCreate | Initialize worktrees for parallel agents |
 
-Hooks are configured in `hooks/hooks.json` using `${CLAUDE_PLUGIN_ROOT}` paths.
+Hook definitions live in `hooks/hooks-template.json`. They are installed per-project
+via `scripts/install-hooks.js`, which resolves paths to absolute locations.
 One hook per lifecycle event (consolidate rather than chain).
 
 ## Campaign Files

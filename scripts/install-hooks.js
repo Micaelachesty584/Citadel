@@ -13,7 +13,7 @@
  *   node /path/to/Citadel/scripts/install-hooks.js /project  # explicit project path
  *
  * What it does:
- *   1. Reads hooks/hooks.json from the Citadel plugin
+ *   1. Reads hooks/hooks-template.json from the Citadel plugin
  *   2. Replaces ${CLAUDE_PLUGIN_ROOT} with the actual absolute path
  *   3. Merges the resolved hooks into .claude/settings.json in the target project
  *   4. Preserves any existing non-hook settings (permissions, env, mcpServers, etc.)
@@ -27,7 +27,7 @@ const fs = require('fs');
 const path = require('path');
 
 const CITADEL_ROOT = path.resolve(__dirname, '..');
-const HOOKS_JSON = path.join(CITADEL_ROOT, 'hooks', 'hooks.json');
+const HOOKS_JSON = path.join(CITADEL_ROOT, 'hooks', 'hooks-template.json');
 const PROJECT_ROOT = process.argv[2] || process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const SETTINGS_PATH = path.join(PROJECT_ROOT, '.claude', 'settings.json');
 

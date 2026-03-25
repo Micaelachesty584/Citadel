@@ -30,7 +30,15 @@ You never invoke them manually. They provide automated quality enforcement.
 
 ## Configuration
 
-Hooks are configured in `hooks/hooks.json` using `${CLAUDE_PLUGIN_ROOT}` for path resolution:
+Hook definitions live in `hooks/hooks-template.json`. They are installed per-project
+via `scripts/install-hooks.js`, which resolves `${CLAUDE_PLUGIN_ROOT}` to absolute paths:
+
+```bash
+# From your project directory:
+node /path/to/Citadel/scripts/install-hooks.js
+```
+
+This writes resolved hooks into your project's `.claude/settings.json`:
 
 ```json
 {
@@ -40,7 +48,7 @@ Hooks are configured in `hooks/hooks.json` using `${CLAUDE_PLUGIN_ROOT}` for pat
         "hooks": [
           {
             "type": "command",
-            "command": "node '${CLAUDE_PLUGIN_ROOT}/hooks_src/post-edit.js'",
+            "command": "node /absolute/path/to/Citadel/hooks_src/post-edit.js",
             "timeout": 30
           }
         ]
