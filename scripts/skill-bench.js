@@ -356,7 +356,7 @@ function executeScenario(scenario, claudeCmd, tmpDir) {
   try {
     const output = execFileSync(
       bin,
-      [...binArgs, '--print', '--dangerously-skip-permissions', scenario.input],
+      [...binArgs, '--plugin-dir', PLUGIN_ROOT, '--print', '--dangerously-skip-permissions', scenario.input],
       {
         cwd: tmpDir,
         timeout: scenario.timeout,
