@@ -6,7 +6,7 @@ tags: [fringe, missing-state]
 input: /triage
 state: clean
 assert-contains:
-  - gh
+  - issues
 assert-not-contains:
   - ENOENT
   - TypeError

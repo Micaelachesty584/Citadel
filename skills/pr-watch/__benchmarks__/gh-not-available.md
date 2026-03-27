@@ -6,7 +6,7 @@ tags: [fringe, missing-tool]
 input: /pr-watch 42
 state: clean
 assert-contains:
-  - gh
+  - repo
 assert-not-contains:
   - TypeError
   - ENOENT

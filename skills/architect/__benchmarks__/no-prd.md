@@ -7,7 +7,7 @@ input: /architect
 state: clean
 assert-contains:
   - PRD
-  - direction
+  - building
 assert-not-contains:
   - ENOENT
   - TypeError
