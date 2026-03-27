@@ -1,70 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="280" height="400" viewBox="0 0 280 400">
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="220" viewBox="0 0 560 220">
   <defs>
-    <linearGradient id="skill-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    <linearGradient id="cs-bg" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#0a0e14"/>
+      <stop offset="100%" stop-color="#0d1117"/>
     </linearGradient>
-    <linearGradient id="skill-accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00d2ff;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#3a7bd5;stop-opacity:1" />
+    <linearGradient id="cs-top" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#3a7bd5"/>
     </linearGradient>
-    <filter id="skill-glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="cs-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <style>
+      .cs-mono { font-family: 'SF Mono','Cascadia Code','Consolas',monospace; }
+      .cs-sans { font-family: 'Segoe UI',system-ui,-apple-system,sans-serif; }
+      @keyframes cs-pulse {
+        0%,100% { opacity: 0.35; }
+        50%      { opacity: 0.9; }
+      }
+      .cs-core { animation: cs-pulse 2.8s ease-in-out infinite; }
+    </style>
   </defs>
 
-  <!-- Card body -->
-  <rect width="280" height="400" rx="16" fill="url(#skill-bg)" stroke="#00d2ff" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- Background -->
+  <rect width="560" height="220" rx="12" fill="url(#cs-bg)"/>
+  <pattern id="cs-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="10" cy="10" r="0.7" fill="#1e2632" opacity="0.8"/>
+  </pattern>
+  <rect width="560" height="220" rx="12" fill="url(#cs-dots)" opacity="0.6"/>
 
-  <!-- Top accent line -->
-  <rect x="20" y="12" width="240" height="3" rx="1.5" fill="url(#skill-accent)" opacity="0.8"/>
+  <!-- Border -->
+  <rect x="0.5" y="0.5" width="559" height="219" rx="12" fill="none" stroke="#1e2632" stroke-width="1.5"/>
 
-  <!-- Character icon: scroll/book -->
-  <g transform="translate(140,100)" filter="url(#skill-glow)">
-    <circle r="50" fill="none" stroke="#00d2ff" stroke-width="1" opacity="0.3"/>
-    <circle r="38" fill="none" stroke="#00d2ff" stroke-width="1" opacity="0.15"/>
-    <!-- Book shape -->
-    <rect x="-24" y="-30" width="48" height="60" rx="3" fill="none" stroke="#00d2ff" stroke-width="2"/>
-    <line x1="0" y1="-30" x2="0" y2="30" stroke="#00d2ff" stroke-width="1.5"/>
-    <line x1="-16" y1="-18" x2="-6" y2="-18" stroke="#00d2ff" stroke-width="1.5" opacity="0.6"/>
-    <line x1="-16" y1="-10" x2="-6" y2="-10" stroke="#00d2ff" stroke-width="1.5" opacity="0.6"/>
-    <line x1="-16" y1="-2" x2="-6" y2="-2" stroke="#00d2ff" stroke-width="1.5" opacity="0.6"/>
-    <line x1="6" y1="-18" x2="16" y2="-18" stroke="#00d2ff" stroke-width="1.5" opacity="0.6"/>
-    <line x1="6" y1="-10" x2="16" y2="-10" stroke="#00d2ff" stroke-width="1.5" opacity="0.6"/>
-    <line x1="6" y1="-2" x2="16" y2="-2" stroke="#00d2ff" stroke-width="1.5" opacity="0.6"/>
-    <!-- Sparkle -->
-    <circle cx="20" cy="-35" r="2" fill="#00d2ff" opacity="0.8"/>
-    <circle cx="28" cy="-28" r="1.2" fill="#00d2ff" opacity="0.5"/>
-  </g>
+  <!-- Gradient top bar -->
+  <rect x="18" y="0" width="524" height="3" rx="1.5" fill="url(#cs-top)" opacity="0.85"/>
 
-  <!-- Name -->
-  <text x="140" y="185" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="28" font-weight="700" fill="#ffffff" letter-spacing="3">SKILL</text>
+  <!-- Left color bar -->
+  <rect x="0" y="0" width="4" height="220" rx="2" fill="#00d2ff" opacity="0.75"/>
+
+  <!-- Icon section (left, x=4..115) -->
+  <circle cx="60" cy="110" r="40" fill="none" stroke="#00d2ff" stroke-width="1" opacity="0.18"/>
+  <circle cx="60" cy="110" r="28" fill="none" stroke="#00d2ff" stroke-width="1" opacity="0.12"/>
+  <circle class="cs-core" cx="60" cy="110" r="8" fill="#00d2ff" filter="url(#cs-glow)" opacity="0.35"/>
+  <circle cx="60" cy="110" r="4" fill="#00d2ff" opacity="0.9"/>
+  <!-- Tick marks on outer ring -->
+  <line x1="60" y1="70" x2="60" y2="76" stroke="#00d2ff" stroke-width="1.5" opacity="0.4"/>
+  <line x1="60" y1="144" x2="60" y2="150" stroke="#00d2ff" stroke-width="1.5" opacity="0.4"/>
+  <line x1="20" y1="110" x2="26" y2="110" stroke="#00d2ff" stroke-width="1.5" opacity="0.4"/>
+  <line x1="94" y1="110" x2="100" y2="110" stroke="#00d2ff" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Vertical divider -->
+  <line x1="115" y1="22" x2="115" y2="198" stroke="#1c2330" stroke-width="1"/>
+
+  <!-- TITLE -->
+  <text x="134" y="56" class="cs-sans" font-size="30" font-weight="900" fill="#e6edf3" letter-spacing="4">SKILL</text>
 
   <!-- Role -->
-  <text x="140" y="210" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" fill="#00d2ff" opacity="0.9" letter-spacing="1">DOMAIN EXPERT</text>
+  <text x="134" y="76" class="cs-mono" font-size="10" fill="#00d2ff" letter-spacing="2.5" opacity="0.85">DOMAIN EXPERT</text>
 
-  <!-- Divider -->
-  <line x1="40" y1="228" x2="240" y2="228" stroke="#00d2ff" stroke-width="0.5" opacity="0.3"/>
+  <!-- Invoke badge -->
+  <rect x="134" y="84" width="110" height="18" rx="9" fill="#001820" stroke="#00d2ff" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="189" y="97" class="cs-mono" font-size="10" fill="#00d2ff" text-anchor="middle">/[skill-name]</text>
 
-  <!-- Stats -->
-  <g font-family="'Segoe UI',system-ui,sans-serif" font-size="12">
-    <text x="40" y="256" fill="#8892b0">Format</text>
-    <text x="240" y="256" text-anchor="end" fill="#ccd6f6">Markdown protocol</text>
+  <!-- Section divider -->
+  <line x1="124" y1="114" x2="544" y2="114" stroke="#1c2330" stroke-width="1"/>
 
-    <text x="40" y="282" fill="#8892b0">Loading</text>
-    <text x="240" y="282" text-anchor="end" fill="#ccd6f6">On-demand</text>
+  <!-- Bullets -->
+  <circle cx="136" cy="134" r="3.5" fill="#00d2ff" opacity="0.85"/>
+  <text x="149" y="138" class="cs-sans" font-size="13" fill="#c9d1d9">Loads focused expertise on demand</text>
 
-    <text x="40" y="308" fill="#8892b0">Tokens (inactive)</text>
-    <text x="240" y="308" text-anchor="end" fill="#00d2ff">Zero</text>
+  <circle cx="136" cy="160" r="3.5" fill="#00d2ff" opacity="0.85"/>
+  <text x="149" y="164" class="cs-sans" font-size="13" fill="#c9d1d9">Zero tokens when not invoked</text>
 
-    <text x="40" y="334" fill="#8892b0">Portability</text>
-    <text x="240" y="334" text-anchor="end" fill="#ccd6f6">Any project</text>
-  </g>
-
-  <!-- Bottom description -->
-  <text x="140" y="372" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#8892b0" opacity="0.7">
-    <tspan x="140" dy="0">Focused protocols that load expertise</tspan>
-    <tspan x="140" dy="14">on demand. Zero cost when idle.</tspan>
-  </text>
+  <circle cx="136" cy="186" r="3.5" fill="#00d2ff" opacity="0.85"/>
+  <text x="149" y="190" class="cs-sans" font-size="13" fill="#c9d1d9">33 built-in — write your own</text>
 </svg>

@@ -45,26 +45,23 @@ For persistent plugin install across all sessions, use the marketplace method in
 /reload-plugins
 ```
 
-> **Note:** The hook installer (step 3) is required until [a known upstream bug](https://github.com/anthropics/claude-code/issues/24529) is resolved. It writes Citadel's hook config into your project's `.claude/settings.json` with resolved paths. `/do setup` will also run this automatically.
+> **Note:** The hook installer (step 3) is required until [a known upstream bug](https://github.com/anthropics/claude-code/issues/24529) is resolved. `/do setup` will also run this automatically.
 
 [Full install guide →](QUICKSTART.md)
 
-## Try These First
-
-```
-/do fix the typo on line 42        # Direct edit, zero overhead
-/do review the auth module         # 5-pass structured code review
-/do why is the API returning 500   # Root cause analysis
-/do build a caching layer          # Multi-step orchestrated build
-```
+## How It Works
 
 Say what you want. `/do` routes it to the cheapest tool that can handle it.
 
-## How It Works
+```
+/do fix the typo on line 42        # Direct edit — no model call
+/do review the auth module         # 5-pass structured code review
+/do why is the API returning 500   # Root cause analysis
+/do build a caching layer          # Multi-step orchestrated build
+/do overhaul all three services    # Parallel fleet with isolated worktrees
+```
 
-You type what you want. `/do` classifies your intent across four tiers — pattern match, active session state, keyword lookup, and LLM classification — and dispatches to the cheapest tool capable of handling it. A typo fix never touches an LLM. A multi-service overhaul gets a parallel fleet with isolated worktrees and discovery sharing between waves.
-
-Simple tasks get simple tools. Complex tasks get campaigns with phases, verification, and self-correction. You never have to choose.
+Classification runs across four tiers: regex pattern match (0 tokens), active session state, keyword lookup, and LLM classification (~500 tokens). A typo fix never touches a model. A platform-wide refactor gets a parallel fleet with discovery sharing between waves. You never have to choose the tool.
 
 **[▶ See it route live →](https://sethgammon.github.io/Citadel/)**
 
@@ -74,161 +71,26 @@ Four tiers. Use the cheapest one that fits.
 
 <table>
 <tr>
-<td width="50%" align="center">
-<img src="assets/card-skill.svg" width="400" alt="Skill — Domain Expert" />
+<td width="50%">
+<img src="assets/card-skill.svg" width="100%" alt="Skill — Domain Expert" />
 </td>
-<td width="50%" align="center">
-<img src="assets/card-marshal.svg" width="400" alt="Marshal — Session Commander" />
+<td width="50%">
+<img src="assets/card-marshal.svg" width="100%" alt="Marshal — Session Commander" />
 </td>
 </tr>
 <tr>
-<td width="50%" align="center">
-<img src="assets/card-archon.svg" width="400" alt="Archon — Autonomous Strategist" />
+<td width="50%">
+<img src="assets/card-archon.svg" width="100%" alt="Archon — Autonomous Strategist" />
 </td>
-<td width="50%" align="center">
-<img src="assets/card-fleet.svg" width="400" alt="Fleet — Parallel Coordinator" />
+<td width="50%">
+<img src="assets/card-fleet.svg" width="100%" alt="Fleet — Parallel Coordinator" />
 </td>
 </tr>
 </table>
 
-## Skills (33)
-
-### App Creation (3)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| PRD | Generates a Product Requirements Document from an app description | `/prd` |
-| Architect | Converts a PRD into file tree, build phases, and end conditions | `/architect` |
-| Create App | End-to-end app creation with 5 tiers: blank, guided, templated, generated, or feature addition | `/create-app` |
-
-### Code Quality (5)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| Code Review | 5-pass structured review (correctness, security, performance, readability, consistency) | `/review` |
-| Test Generation | Generates tests that run. Detects your framework, iterates up to 3x on failures. | `/test-gen` |
-| Documentation | Function-level, module-level, or API reference. Matches your doc style. | `/doc-gen` |
-| Refactoring | Safe multi-file refactoring. Typechecks before and after. Reverts on failure. | `/refactor` |
-| Scaffolding | Project-aware file generation. Reads your conventions and matches them. | `/scaffold` |
-
-### Research & Debugging (4)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| Research | Structured investigation with confidence levels and sources | `/research` |
-| Research Fleet | Parallel multi-scout research with wave compression | `/research-fleet` |
-| Experiment | Optimization loops with scalar fitness functions in isolated worktrees | `/experiment` |
-| Systematic Debugging | 4-phase root cause analysis. Emergency stop after 2 failed fixes. | `/systematic-debugging` |
-
-### Orchestration (5)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| Router | Universal router — classifies intent and dispatches to cheapest capable path | `/do [anything]` |
-| Marshal | Single-session orchestrator. Chains skills autonomously. | `/marshal` |
-| Archon | Multi-session campaigns with self-correction and quality gates | `/archon` |
-| Fleet | Parallel agents with discovery sharing and coordination safety | `/fleet` |
-| Autopilot | Intake-to-delivery pipeline for pending work items | `/autopilot` |
-
-### Quality & Observability (5)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| Design | Generates and maintains a design manifest for visual consistency | `/design` |
-| QA | Browser-based interaction testing via Playwright (optional dependency) | `/qa` |
-| Live Preview | Mid-build visual verification via screenshots | `/live-preview` |
-| Dashboard | Real-time view of campaigns, fleet sessions, telemetry, and hook health | `/dashboard` |
-| Verify | Self-tests the hook pipeline from inside a live session | `/verify` |
-
-### GitHub & CI (3)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| Triage | Pulls open issues/PRs, classifies them, searches codebase for context | `/triage` |
-| PR Watch | Monitors CI status, auto-fixes failing checks | `/pr-watch` |
-| Merge Review | Reviews pending fleet worktree merges before integration | `/merge-review` |
-
-### Maintenance & Learning (4)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| Postmortem | Auto-generates structured postmortems from completed campaigns | `/postmortem` |
-| Learn | Extracts reusable patterns from completed campaigns into the knowledge base | `/learn` |
-| Create Skill | Creates new skills from your repeating patterns | `/create-skill` |
-| ASCII Diagram | Generates aligned ASCII architecture, flow, and sequence diagrams | `/ascii-diagram` |
-
-### Utilities (4)
-| Skill | What It Does | Invoke |
-|---|---|---|
-| Schedule | Manages recurring and one-off remote agents via Claude's scheduling infrastructure | `/schedule` |
-| Session Handoff | Context transfer between sessions | `/session-handoff` |
-| Setup | First-run harness configuration | `/do setup` |
-| Skill Builder | Guided skill creation | `/create-skill` |
-
-## Hooks (14 event types)
-
-Automated enforcement and observability that runs without you thinking about it. Every hook is a standalone Node.js script — no daemons, no services.
-
-| Event | What It Does |
-|---|---|
-| **PreToolUse** (Edit/Write) | Blocks writes to protected files and `.env` secrets. Warns on out-of-scope edits during active campaigns. Hard-blocks files declared Restricted in a campaign. |
-| **PreToolUse** (Edit/Write/Bash/Agent) | Governance: appends every significant tool call to `audit.jsonl`. Never blocks. <5ms overhead. |
-| **PostToolUse** | Per-file typecheck on every edit. Catches type errors at write-time. |
-| **PostToolUseFailure** | Circuit breaker: prevents runaway token expenditure. At 3 consecutive failures, forces a strategic pivot. At 5, cuts execution entirely. |
-| **PreCompact** | Saves active campaign context and full session handoff before context compression. Three modes: auto (default), prompt, off. |
-| **PostCompact** | Re-injects pre-compact state after a compacted session resumes. |
-| **Stop** | Quality gate: scans recently-edited files for anti-patterns (confirm/alert, transition-all, magic intervals). Custom rules via `harness.json`. |
-| **StopFailure** | Logs hook errors to audit log for post-mortem analysis. |
-| **SessionStart** | Scaffolds `.planning/` tree and `.citadel/scripts/` on first run. Idempotent. |
-| **SessionStart** (compact) | Restores pre-compact context when resuming a compacted session. |
-| **SessionStart** | Scans `.planning/intake/` for pending items and announces them. |
-| **SessionEnd** | Logs session close event to telemetry. |
-| **SubagentStop** | Logs abnormal sub-agent terminations to audit log. |
-| **TaskCreated / TaskCompleted** | Logs agent task boundaries to telemetry for work tracking. |
-| **WorktreeCreate** | Auto-installs deps and hooks in parallel agent worktrees. |
-| **WorktreeRemove** | Cleans up worktree lifecycle artifacts. |
-
-## Sub-Agents (4)
-
-Specialized agents that Archon and Fleet spawn as sub-processes. You don't invoke these directly — they're internal workers.
-
-| Agent | Model | What It Does |
-|---|---|---|
-| Archon | Opus | Autonomous campaign executor — decomposes phases, delegates, self-corrects every 2 phases |
-| Fleet | Opus | Parallel coordinator — runs 2-3 agents in isolated worktrees per wave |
-| Arch Reviewer | Default | Read-only architecture auditor — checks boundary violations and import rules. Cannot write. |
-| Knowledge Extractor | Default | Extracts reusable patterns and decisions from completed work into the knowledge base |
-
-## Governance
-
-Every significant action is logged. Citadel writes an append-only audit trail to `.planning/telemetry/audit.jsonl` — every Edit, Write, Bash, and Agent spawn, timestamped and attributed. Hook timing goes to `hook-timing.jsonl`. No cloud, no service — plain JSONL on disk.
-
-Campaign scope enforcement works in the same hook layer: declare a `## Claimed Scope` section in a campaign file and Citadel warns when edits go outside it. Declare `## Restricted Files` and it hard-blocks.
-
-The `external-action-gate` hook (opt-in via `settings.local.json`) blocks irreversible external actions — PR merges, issue closes, releases — while allowing pushes and PR creation.
-
-## Solving AI Amnesia
-
-LLMs compress their context. Without intervention, a long campaign loses its architectural goals the moment compaction kicks in. Citadel externalizes agent context to the filesystem before that happens — the PreCompact hook captures active campaign state and writes a full session handoff to disk. When the session resumes, PostCompact re-injects it. Campaigns run indefinitely without losing their thread.
-
-Close the terminal, come back tomorrow, `/do continue` picks up where you left off.
-
-Campaigns track phases, decisions, feature status, and continuation state in plain markdown files. See [docs/CAMPAIGNS.md](docs/CAMPAIGNS.md).
-
-## Native Parallelism
-
-Instead of in-memory coordination, Citadel uses Git's native worktree feature to spawn isolated branches for concurrent agents. Each agent operates on its own disk snapshot — no race conditions, no shared state collisions. Discoveries compress into ~500-token briefs between waves and relay to the next. Hardware is the only limit.
-
-See [docs/FLEET.md](docs/FLEET.md).
-
-## Testing (for contributors)
-
-Four levels, no LLM required for the first three:
-
-```bash
-node scripts/test-all.js                          # hooks + skill structure, ~1s
-node scripts/verify-hooks.js                      # hook install + 40 runtime tests
-node scripts/integration-test.js                  # full Pre→tool→Post pipeline, 13 sequences
-node scripts/skill-bench.js                       # scenario file validity
-node scripts/skill-bench.js --execute             # live scenarios against claude CLI
-```
-
-Run `node scripts/test-all.js` after any change. Run `verify-hooks.js` and `integration-test.js` after touching hook scripts.
-
 ## FAQ
+
+**Is this for me?** — If you're running Claude Code on a real codebase and finding that agents lose context, repeat mistakes, or can't work in parallel, yes. If you're just starting out with Claude Code, get a few sessions in first and come back when the friction shows up.
 
 **How is this different from CLAUDE.md?** — CLAUDE.md tells Claude about your project. Citadel tells Claude *how to work*: durable state, intelligent routing, automated safety, and native parallelism — the infrastructure layer that CLAUDE.md assumes someone else built.
 
@@ -238,22 +100,17 @@ Run `node scripts/test-all.js` after any change. Run `verify-hooks.js` and `inte
 
 **How much does it cost in tokens?** — Skills cost zero when not loaded. The `/do` router costs ~500 tokens only at Tier 3. Hooks add ~100 tokens per edit. The main cost is the work itself.
 
-**Can I use this with other AI tools?** — Designed for Claude Code specifically. The concepts are portable but the implementation uses Claude Code's extension points.
-
 **Does this work on Windows?** — Yes. All hooks and scripts run on Node.js. As a plugin, it installs identically on all platforms.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting issues, PRs, and new skills.
 
 ## Learn More
 
 - [**Interactive routing demo**](https://sethgammon.github.io/Citadel/) — type any task, watch the tier cascade animate
 - [Full install guide](QUICKSTART.md)
-- [Skills reference](docs/SKILLS.md)
-- [Hooks reference](docs/HOOKS.md)
-- [Campaign guide](docs/CAMPAIGNS.md)
-- [Fleet guide](docs/FLEET.md)
+- [Skills reference](docs/SKILLS.md) — all 33 skills with invocation and examples
+- [Hooks reference](docs/HOOKS.md) — 14 event types, what each one enforces
+- [Campaign guide](docs/CAMPAIGNS.md) — persistent state, phases, AI amnesia prevention
+- [Fleet guide](docs/FLEET.md) — parallel agents, worktree isolation, discovery relay
+- [Contributing](CONTRIBUTING.md) — how to submit issues, PRs, and new skills
 - [External overview: "The Operating System for Autonomous Engineering"](https://repo-explainer.com/SethGammon/Citadel/) — third-party writeup on the architecture and philosophy
 
 ## License

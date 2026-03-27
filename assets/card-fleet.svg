@@ -1,79 +1,105 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="280" height="400" viewBox="0 0 280 400">
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="220" viewBox="0 0 560 220">
   <defs>
-    <linearGradient id="fleet-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a1628;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1a3a5c;stop-opacity:1" />
+    <linearGradient id="cf-bg" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#0a0e14"/>
+      <stop offset="100%" stop-color="#0d1117"/>
     </linearGradient>
-    <linearGradient id="fleet-accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    <linearGradient id="cf-top" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#bc8cff"/>
+      <stop offset="100%" stop-color="#7b2ff7"/>
     </linearGradient>
-    <filter id="fleet-glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="cf-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <style>
+      .cf-mono { font-family: 'SF Mono','Cascadia Code','Consolas',monospace; }
+      .cf-sans { font-family: 'Segoe UI',system-ui,-apple-system,sans-serif; }
+      @keyframes cf-pulse { 0%,100% { opacity: 0.35; } 50% { opacity: 0.9; } }
+      @keyframes cf-wave1 {
+        0%   { opacity: 0; transform: translateY(0); }
+        10%  { opacity: 0.8; transform: translateY(0); }
+        80%  { opacity: 0.8; transform: translateY(-28px); }
+        95%  { opacity: 0; transform: translateY(-28px); }
+        100% { opacity: 0; transform: translateY(0); }
+      }
+      @keyframes cf-wave2 {
+        0%   { opacity: 0; transform: translateY(0); }
+        10%  { opacity: 0.6; transform: translateY(0); }
+        80%  { opacity: 0.6; transform: translateY(-28px); }
+        95%  { opacity: 0; transform: translateY(-28px); }
+        100% { opacity: 0; transform: translateY(0); }
+      }
+      @keyframes cf-wave3 {
+        0%   { opacity: 0; transform: translateY(0); }
+        10%  { opacity: 0.5; transform: translateY(0); }
+        80%  { opacity: 0.5; transform: translateY(-28px); }
+        95%  { opacity: 0; transform: translateY(-28px); }
+        100% { opacity: 0; transform: translateY(0); }
+      }
+      .cf-core  { animation: cf-pulse 2.8s ease-in-out 1.2s infinite; }
+      .cf-a1 { animation: cf-wave1 4s linear 0s   infinite both; }
+      .cf-a2 { animation: cf-wave2 4s linear 0.6s infinite both; }
+      .cf-a3 { animation: cf-wave3 4s linear 1.2s infinite both; }
+    </style>
   </defs>
 
-  <!-- Card body -->
-  <rect width="280" height="400" rx="16" fill="url(#fleet-bg)" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- Background -->
+  <rect width="560" height="220" rx="12" fill="url(#cf-bg)"/>
+  <pattern id="cf-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="10" cy="10" r="0.7" fill="#1e2632" opacity="0.8"/>
+  </pattern>
+  <rect width="560" height="220" rx="12" fill="url(#cf-dots)" opacity="0.6"/>
 
-  <!-- Top accent line -->
-  <rect x="20" y="12" width="240" height="3" rx="1.5" fill="url(#fleet-accent)" opacity="0.8"/>
+  <!-- Border -->
+  <rect x="0.5" y="0.5" width="559" height="219" rx="12" fill="none" stroke="#1e2632" stroke-width="1.5"/>
 
-  <!-- Character icon: constellation / network -->
-  <g transform="translate(140,100)" filter="url(#fleet-glow)">
-    <circle r="50" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.3"/>
-    <circle r="38" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.15"/>
-    <!-- Central node -->
-    <circle r="6" fill="#f59e0b" opacity="0.9"/>
-    <!-- Satellite nodes -->
-    <circle cx="-22" cy="-18" r="4" fill="#ef4444" opacity="0.8"/>
-    <circle cx="22" cy="-18" r="4" fill="#ef4444" opacity="0.8"/>
-    <circle cx="-26" cy="12" r="4" fill="#f59e0b" opacity="0.7"/>
-    <circle cx="26" cy="12" r="4" fill="#f59e0b" opacity="0.7"/>
-    <circle cx="0" cy="26" r="4" fill="#ef4444" opacity="0.6"/>
-    <!-- Connection lines -->
-    <line x1="0" y1="0" x2="-22" y2="-18" stroke="#f59e0b" stroke-width="1.5" opacity="0.5"/>
-    <line x1="0" y1="0" x2="22" y2="-18" stroke="#f59e0b" stroke-width="1.5" opacity="0.5"/>
-    <line x1="0" y1="0" x2="-26" y2="12" stroke="#f59e0b" stroke-width="1.5" opacity="0.4"/>
-    <line x1="0" y1="0" x2="26" y2="12" stroke="#f59e0b" stroke-width="1.5" opacity="0.4"/>
-    <line x1="0" y1="0" x2="0" y2="26" stroke="#f59e0b" stroke-width="1.5" opacity="0.3"/>
-    <!-- Cross connections (discovery relay) -->
-    <line x1="-22" y1="-18" x2="22" y2="-18" stroke="#ef4444" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
-    <line x1="-26" y1="12" x2="26" y2="12" stroke="#ef4444" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
-    <!-- Outer orbit dots -->
-    <circle cx="-34" cy="-30" r="1.5" fill="#f59e0b" opacity="0.4"/>
-    <circle cx="34" cy="-30" r="1.5" fill="#f59e0b" opacity="0.4"/>
-    <circle cx="36" cy="24" r="1.5" fill="#f59e0b" opacity="0.3"/>
-  </g>
+  <!-- Gradient top bar -->
+  <rect x="18" y="0" width="524" height="3" rx="1.5" fill="url(#cf-top)" opacity="0.85"/>
 
-  <!-- Name -->
-  <text x="140" y="185" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="28" font-weight="700" fill="#ffffff" letter-spacing="4">FLEET</text>
+  <!-- Left color bar -->
+  <rect x="0" y="0" width="4" height="220" rx="2" fill="#bc8cff" opacity="0.75"/>
+
+  <!-- Icon section: 3 parallel agents rising into central hub -->
+  <circle cx="60" cy="110" r="40" fill="none" stroke="#bc8cff" stroke-width="1" opacity="0.18"/>
+  <!-- Three parallel agent tracks (animated) -->
+  <circle class="cf-a1" cx="42" cy="126" r="4" fill="#bc8cff" opacity="0"/>
+  <circle class="cf-a2" cx="60" cy="126" r="4" fill="#bc8cff" opacity="0"/>
+  <circle class="cf-a3" cx="78" cy="126" r="4" fill="#bc8cff" opacity="0"/>
+  <!-- Track lines (static, faint) -->
+  <line x1="42" y1="98" x2="42" y2="128" stroke="#bc8cff" stroke-width="1" stroke-dasharray="3,3" opacity="0.2"/>
+  <line x1="60" y1="88" x2="60" y2="128" stroke="#bc8cff" stroke-width="1" stroke-dasharray="3,3" opacity="0.2"/>
+  <line x1="78" y1="98" x2="78" y2="128" stroke="#bc8cff" stroke-width="1" stroke-dasharray="3,3" opacity="0.2"/>
+  <!-- Convergence lines to hub -->
+  <line x1="42" y1="98" x2="60" y2="88" stroke="#bc8cff" stroke-width="1" opacity="0.25"/>
+  <line x1="78" y1="98" x2="60" y2="88" stroke="#bc8cff" stroke-width="1" opacity="0.25"/>
+  <!-- Hub -->
+  <circle class="cf-core" cx="60" cy="88" r="8" fill="#bc8cff" filter="url(#cf-glow)" opacity="0.35"/>
+  <circle cx="60" cy="88" r="4" fill="#bc8cff" opacity="0.9"/>
+
+  <!-- Vertical divider -->
+  <line x1="115" y1="22" x2="115" y2="198" stroke="#1c2330" stroke-width="1"/>
+
+  <!-- TITLE -->
+  <text x="134" y="56" class="cf-sans" font-size="30" font-weight="900" fill="#e6edf3" letter-spacing="4">FLEET</text>
 
   <!-- Role -->
-  <text x="140" y="210" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="13" fill="#f59e0b" opacity="0.9" letter-spacing="1">PARALLEL COORDINATOR</text>
+  <text x="134" y="76" class="cf-mono" font-size="10" fill="#bc8cff" letter-spacing="2.5" opacity="0.85">PARALLEL COORDINATOR</text>
 
-  <!-- Divider -->
-  <line x1="40" y1="228" x2="240" y2="228" stroke="#f59e0b" stroke-width="0.5" opacity="0.3"/>
+  <!-- Invoke badge -->
+  <rect x="134" y="84" width="68" height="18" rx="9" fill="#0e0918" stroke="#bc8cff" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="168" y="97" class="cf-mono" font-size="10" fill="#bc8cff" text-anchor="middle">/fleet</text>
 
-  <!-- Stats -->
-  <g font-family="'Segoe UI',system-ui,sans-serif" font-size="12">
-    <text x="40" y="256" fill="#8892b0">Agents</text>
-    <text x="240" y="256" text-anchor="end" fill="#f59e0b">2–3 per wave</text>
+  <!-- Section divider -->
+  <line x1="124" y1="114" x2="544" y2="114" stroke="#1c2330" stroke-width="1"/>
 
-    <text x="40" y="282" fill="#8892b0">Isolation</text>
-    <text x="240" y="282" text-anchor="end" fill="#ccd6f6">Worktree-scoped</text>
+  <!-- Bullets -->
+  <circle cx="136" cy="134" r="3.5" fill="#bc8cff" opacity="0.85"/>
+  <text x="149" y="138" class="cf-sans" font-size="13" fill="#c9d1d9">2–3 agents per wave in isolated worktrees</text>
 
-    <text x="40" y="308" fill="#8892b0">Discovery</text>
-    <text x="240" y="308" text-anchor="end" fill="#ccd6f6">Wave relay</text>
+  <circle cx="136" cy="160" r="3.5" fill="#bc8cff" opacity="0.85"/>
+  <text x="149" y="164" class="cf-sans" font-size="13" fill="#c9d1d9">Discoveries compressed and relayed forward</text>
 
-    <text x="40" y="334" fill="#8892b0">Scale</text>
-    <text x="240" y="334" text-anchor="end" fill="#f59e0b">Institutional</text>
-  </g>
-
-  <!-- Bottom description -->
-  <text x="140" y="372" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="10" fill="#8892b0" opacity="0.7">
-    <tspan x="140" dy="0">Parallel agents sharing discoveries</tspan>
-    <tspan x="140" dy="14">between coordinated waves.</tspan>
-  </text>
+  <circle cx="136" cy="186" r="3.5" fill="#bc8cff" opacity="0.85"/>
+  <text x="149" y="190" class="cf-sans" font-size="13" fill="#c9d1d9">Platform-scale work, no race conditions</text>
 </svg>
