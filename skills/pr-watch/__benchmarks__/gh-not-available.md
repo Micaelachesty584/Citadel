@@ -6,7 +6,7 @@ tags: [fringe, missing-tool]
 input: /pr-watch 42
 state: with-git-remote
 assert-contains:
-  - gh
+  - github
 assert-not-contains:
   - TypeError
   - spawn
