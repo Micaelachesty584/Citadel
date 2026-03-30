@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const { readJsonlDetailed } = require('../core/telemetry/io');
+const { readCampaignStats: readCampaignStatsCore } = require('../core/campaigns/load-campaign');
 const { getCoordinationStatus } = require('../core/coordination/instances');
 const { getClaimStatus } = require('../core/coordination/claims');
 
@@ -22,7 +23,6 @@ try { sessionTokens = require('./session-tokens'); } catch { /* not available */
 const ROOT = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const PLANNING_DIR = path.join(ROOT, '.planning');
 const TELEMETRY_DIR = path.join(PLANNING_DIR, 'telemetry');
-const CAMPAIGNS_DIR = path.join(PLANNING_DIR, 'campaigns');
 const FLEET_DIR = path.join(PLANNING_DIR, 'fleet');
 const SETTINGS_PATH = path.join(ROOT, '.claude', 'settings.json');
 
@@ -54,24 +54,7 @@ function todayPrefix() {
 // ── Campaign stats ────────────────────────────────────────────────────────────
 
 function readCampaignStats() {
-  const active = [];
-  const completedDir = path.join(CAMPAIGNS_DIR, 'completed');
-
-  if (fs.existsSync(CAMPAIGNS_DIR)) {
-    const files = fs.readdirSync(CAMPAIGNS_DIR);
-    for (const f of files) {
-      if (f.endsWith('.md') && !f.startsWith('_')) {
-        active.push(f.replace(/\.md$/, ''));
-      }
-    }
-  }
-
-  let completed_count = 0;
-  if (fs.existsSync(completedDir)) {
-    completed_count = fs.readdirSync(completedDir).filter(f => f.endsWith('.md')).length;
-  }
-
-  return { active, completed_count };
+  return readCampaignStatsCore(ROOT);
 }
 
 // ── Fleet stats ───────────────────────────────────────────────────────────────
